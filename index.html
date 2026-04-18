@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediFlow Elite | Hospital Intelligence</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="toast-container"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-icon" style="width: 45px; height: 45px; background: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center;"><i class="fas fa-hospital-user fa-lg" style="color: white;"></i></div>
+            <span style="font-weight: 800; font-size: 1.4rem; letter-spacing: -1px;">MEDIFLOW <span style="color: var(--primary);">PRO</span></span>
+        </div>
+
+        <nav class="nav-links">
+            <a href="javascript:void(0)" class="nav-item active" onclick="loadView('dashboard', this)">
+                <i class="fas fa-home-lg-alt"></i> Dashboard Overview
+            </a>
+            <a href="javascript:void(0)" class="nav-item" onclick="loadView('patients', this)">
+                <i class="fas fa-users-medical"></i> Patient Directory
+            </a>
+            <a href="javascript:void(0)" class="nav-item" onclick="loadView('doctors', this)">
+                <i class="fas fa-user-md"></i> Medical Staff
+            </a>
+            <a href="javascript:void(0)" class="nav-item" onclick="loadView('appointments', this)">
+                <i class="fas fa-calendar-check"></i> Appointments
+            </a>
+        </nav>
+
+
+        <div style="margin-top: auto; padding: 16px; background: rgba(255,255,255,0.04); border-radius: 12px;">
+            <p style="font-size: 0.68rem; color: #64748b; font-weight: 700; margin-bottom: 5px;">SYSTEM STATUS</p>
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <div class="pulse-dot"></div>
+                <span style="font-size: 0.8rem; font-weight: 600; color: #94a3b8;">All Systems Operational</span>
+            </div>
+        </div>
+
+    </aside>
+
+    <div class="main-wrapper" id="main-wrapper">
+        <header class="top-header">
+            <div style="display: flex; align-items: center; gap: 3rem;">
+                <div>
+                    <h2 id="view-title" style="font-weight: 800; font-size: 1.25rem; color: var(--text-main);">Dashboard</h2>
+                    <p id="view-subtitle" style="font-size: 0.75rem; color: var(--text-muted);">Real-time hospital operations</p>
+                </div>
+                
+                <div class="search-container" style="position: relative; width: 400px;">
+                    <i class="fas fa-search" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.8rem;"></i>
+                    <input type="text" id="global-search" placeholder="Search patients, doctors or records..." style="width: 100%; padding: 12px 15px 12px 40px; border-radius: 12px; border: 1px solid var(--border); background: var(--bg-main); font-size: 0.85rem; outline: none; transition: all 0.3s;" onkeyup="handleGlobalSearch(this.value)">
+                </div>
+            </div>
+
+            
+            <div style="display: flex; align-items: center; gap: 2rem;">
+                <div id="system-clock" style="font-family: monospace; font-weight: 700; color: var(--primary); background: #f3f4f6; padding: 8px 15px; border-radius: 10px;">00:00:00</div>
+                <div class="theme-toggle" onclick="toggleTheme()" style="cursor: pointer; width: 45px; height: 45px; background: #f3f4f6; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px; border-left: 1px solid var(--border-color); padding-left: 2rem;">
+                    <div style="text-align: right;">
+                        <p style="font-weight: 700; font-size: 0.9rem;">Admin User</p>
+                        <p style="font-size: 0.7rem; color: #10b981; font-weight: 700;">ONLINE</p>
+                    </div>
+                    <div style="width: 45px; height: 45px; background: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center;"><i class="fas fa-user-shield" style="color: white;"></i></div>
+                </div>
+            </div>
+        </header>
+
+        <div id="content-area" class="view-transition"></div>
+    </div>
+
+
+
+
+    <div id="modal" class="modal-overlay" style="display:none;">
+        <div class="form-card" id="modal-content"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
+
