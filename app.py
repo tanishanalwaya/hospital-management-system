@@ -12,7 +12,7 @@ def get_db_connection():
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html')   
 
 # API Endpoints
 @app.route('/api/patients', methods=['GET', 'POST'])
