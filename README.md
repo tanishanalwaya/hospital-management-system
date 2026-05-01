@@ -12,3 +12,4 @@ A Python-based hospital management system using SQLite database.
 - Python
 - SQLite
 - HTML/CSS/JS
+ 
