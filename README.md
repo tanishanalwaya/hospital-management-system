@@ -1,5 +1,5 @@
 # Hospital Management System 
-                                     
+                                      
 ## Description
 A Python-based hospital management system using SQLite database.
 
