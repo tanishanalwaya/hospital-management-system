@@ -8,7 +8,7 @@ A Python-based hospital management system using SQLite database.
 - Handle appointments
 - Store hospital data
 
-## Tech Stack
+## Tech Stack 
 - Python
 - SQLite
 - HTML/CSS/JS
